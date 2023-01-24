@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Like/Dislike</title>
+    <style>
+      /* Styles for the buttons */
+      .like-button, .dislike-button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #4CAF50; /* Green */
+        color: white;
+        cursor: pointer;
+      }
+      .dislike-button {
+        background-color: #f44336; /* Red */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Please give your feedback</h1>
+    <form method="POST" action="{% url 'update_feedback' %}">
+        {% csrf_token %}
+        <input type="submit" class="like-button" name="like_btn" value="Like"/>
+        <input type="submit" class="dislike-button" name="dislike_btn" value="Dislike"/>
+    </form>
+    <p>Likes: {{ feedback.like_count }}</p>
+    <p>Dislikes: {{ feedback.dislike_count }}</p>
+  </body>
+</html>
